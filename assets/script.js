@@ -14,32 +14,80 @@ button.addEventListener('click', function () {
         .then(function (data) {
             console.log('Fetch Response \n-------------');
             console.log(data);
-
+            // this is the weather for 'today'
             let nameEl = document.querySelector('.name');
             nameEl.textContent = 'City: ' + data.city.name
-
             let tempEl = document.querySelector('.temp');
-
             tempEl.textContent = 'Temperature: ' + Math.round((data.list[0].main.temp - 273.15) * (9 / 5) + (32)) + '°F'
-
             let descriptionEl = document.querySelector('.humid');
             descriptionEl.textContent = 'Humidity: ' + data.list[0].main.humidity + '%'
-
             let windEl = document.querySelector('.wind');
             windEl.textContent = 'Wind Speed: ' + data.list[0].wind.speed + ' MPH'
-
+            // first card
             for (let i = 0; i < 40; i++) {
-                if (data.list[i].dt_txt.includes("12:00:00") == true) {
-
-                    console.log(data.list[i].dt_txt)
-                    // let hour = data.list[i].dt_txt
-                    // let temperature = data.list[i].main.temp
-
-
-
+                if (data.list[i].dt_txt.includes("12:00:00") == true && data.list[i].dt_txt.includes(today.add(1, 'day').format('YYYY-MM-DD')) == true) {
+                  
+                    let date1El = document.querySelector('.date1');
+                    date1El.textContent = 'Date: ' + (today.add(1, 'day').format('YYYY-MM-DD'))
+                    let humid1El = document.querySelector('.humid1');
+                    humid1El.textContent = 'Humidity: ' + data.list[i].main.humidity + '%'
+                    let temp1El = document.querySelector('.temp1');
+                    temp1El.textContent = 'Temperature: ' + Math.round((data.list[i].main.temp - 273.15) * (9 / 5) + (32)) + '°F'
+                    let wind1 = document.querySelector('.wind1');
+                    wind1.textContent = 'Wind Speed: ' + data.list[i].wind.speed + ' MPH'
                 }
-
             }
-
+            // second card
+            for (let i = 0; i < 40; i++) {
+                if (data.list[i].dt_txt.includes("12:00:00") == true && data.list[i].dt_txt.includes(today.add(2, 'day').format('YYYY-MM-DD')) == true) {
+                    let date2El = document.querySelector('.date2');
+                    date2El.textContent = 'Date: ' + (today.add(2, 'day').format('YYYY-MM-DD'))
+                    let humid2El = document.querySelector('.humid2');
+                    humid2El.textContent = 'Humidity: ' + data.list[i].main.humidity + '%'
+                    let temp2El = document.querySelector('.temp2');
+                    temp2El.textContent = 'Temperature: ' + Math.round((data.list[i].main.temp - 273.15) * (9 / 5) + (32)) + '°F'
+                    let wind2 = document.querySelector('.wind2');
+                    wind2.textContent = 'Wind Speed: ' + data.list[i].wind.speed + ' MPH'
+                }
+            }
+            // third card
+            for (let i = 0; i < 40; i++) {
+                if (data.list[i].dt_txt.includes("12:00:00") == true && data.list[i].dt_txt.includes(today.add(3, 'day').format('YYYY-MM-DD')) == true) {
+                    let date3El = document.querySelector('.date3');
+                    date3El.textContent = 'Date: ' + (today.add(3, 'day').format('YYYY-MM-DD'))
+                    let humid3El = document.querySelector('.humid3');
+                    humid3El.textContent = 'Humidity: ' + data.list[i].main.humidity + '%'
+                    let temp3El = document.querySelector('.temp3');
+                    temp3El.textContent = 'Temperature: ' + Math.round((data.list[i].main.temp - 273.15) * (9 / 5) + (32)) + '°F'
+                    let wind3 = document.querySelector('.wind3');
+                    wind3.textContent = 'Wind Speed: ' + data.list[i].wind.speed + ' MPH'
+                }
+            }
+            // fourth card
+            for (let i = 0; i < 40; i++) {
+                if (data.list[i].dt_txt.includes("12:00:00") == true && data.list[i].dt_txt.includes(today.add(4, 'day').format('YYYY-MM-DD')) == true) {
+                    let date4El = document.querySelector('.date4');
+                    date4El.textContent = 'Date: ' + (today.add(4, 'day').format('YYYY-MM-DD'))
+                    let humid4El = document.querySelector('.humid4');
+                    humid4El.textContent = 'Humidity: ' + data.list[i].main.humidity + '%'
+                    let temp4El = document.querySelector('.temp4');
+                    temp4El.textContent = 'Temperature: ' + Math.round((data.list[i].main.temp - 273.15) * (9 / 5) + (32)) + '°F'
+                    let wind4 = document.querySelector('.wind4');
+                    wind4.textContent = 'Wind Speed: ' + data.list[i].wind.speed + ' MPH'
+                }
+            }
+            // fifth card
+            for (let i = 0; i < 40; i++) {
+                if (data.list[i].dt_txt.includes("12:00:00") == true && data.list[i].dt_txt.includes(today.add(5, 'day').format('YYYY-MM-DD')) == true) {
+                    let date5El = document.querySelector('.date5');
+                    date5El.textContent = 'Date: ' + (today.add(5, 'day').format('YYYY-MM-DD'))
+                    let humid5El = document.querySelector('.humid5');
+                    humid5El.textContent = 'Humidity: ' + data.list[i].main.humidity + '%'
+                    let temp5El = document.querySelector('.temp5');
+                    temp5El.textContent = 'Temperature: ' + Math.round((data.list[i].main.temp - 273.15) * (9 / 5) + (32)) + '°F'
+                    let wind5 = document.querySelector('.wind5');
+                    wind5.textContent = 'Wind Speed: ' + data.list[i].wind.speed + ' MPH'
+                }
+            }
         })
 });
