@@ -28,3 +28,16 @@ p{font-size: 30px;}
     width: 400px;
     
 } */
+
+/* // let nameEl = document.querySelector('.name');
+// nameEl.textContent = cityEl.value;
+// let descriptionEl = document.querySelector('.desc');
+// descriptionEl.textContent = 
+// let tempEl = document.querySelector('.temp');
+// tempEl.textContent = ; */
+/* 
+//     temperature == data.list[i].main.temp
+
+//     console.log(data.list[i].main.temp)
+//     console.log(data.list[i].dt_txt)
+// } */
