@@ -8,58 +8,63 @@
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"></script>
     <link rel="stylesheet" href="./assets/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
-<header class="d-flex justify-content-center text">
+<header class="d-flex justify-content-center display-2">
     WEATHER FORCAST</header>
 
 <body>
     <div class="input">
-        <input type="text" class="weather">
-        <button type="submit" value="submit" class="button">submit</button>
+        <input type="text" class="weather"></input> 
+        <button id="saveContent" type="submit" value="submit" class="button">submit</button>
     </div>
-
-    <div class="display">
-        <p class="name">name</p>
-        <p class="humid">humidity</p>
-        <p class="temp">temp</p>
-        <p class ="wind"> wind</p>
+<section class="history d-flex flex-row">
+    
+</section>
+    <div class="row align-items-center">
+        <img class ='image w-25 h-25 '></img>
+        <p class="name">City:</p>
+        <p class="temp">Temperature:</p>
+        <p class="humid">Humidity:</p>
+        <p class ="wind"> Wind:</p>
     </div>
     <section class="d-flex justify-content-center">
         <div class="card day1">
+            <img class="image1 mw-50"></img>
             <p class="date1">Name:</p>
-            <p class="humid1">Humidity:</p>
             <p class="temp1">Temperature:</p>
+            <p class="humid1">Humidity:</p>
             <p class="wind1">Wind:</p>
         </div>
         <div class="card day2">
-            <p class="date2">Name:</p>
-            <p class="humid2">Humidity:</p>
+            <img class="image2 "></img>
+            <p class="date2">Name:</p>    
             <p class="temp2">Temperature:</p>
+            <p class="humid2">Humidity:</p>
             <p class="wind2">Wind:</p>
-            
         </div>
         <div class="card day3">
-            <p class="date3">date:</p>
-            <p class="humid3">Humidity:</p>
+            <img class="image3"></img>
+            <p class="date3">date:</p>            
             <p class="temp3">Temperature:</p>
-            <p class="wind3">Wind:</p>
-            
+            <p class="humid3">Humidity:</p>
+            <p class="wind3">Wind:</p>            
         </div>
         <div class="card day4">
-            <p class="date4">date:</p>
-            <p class="humid4">Humidity:</p>
+            <img class="image4"></img>
+            <p class="date4">date:</p>           
             <p class="temp4">Temperature:</p>
-            <p class="wind4">Wind:</p>
-            
+            <p class="humid4">Humidity:</p>
+            <p class="wind4">Wind:</p>           
         </div>
         <div class="card day5">
+            <img class="image5"></img>
             <p class="date5">date:</p>
-            <p class="humid5">Humidity:</p>
             <p class="temp5">Temperature:</p>
+              <p class="humid5">Humidity:</p>
             <p class="wind5">Wind:</p>
-          
         </div>
     </section>
     <script src="./assets/script.js"></script>

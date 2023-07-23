@@ -1,11 +1,39 @@
 let APIKey = 'b8a8e7dd16a33d470c7849ca148ec3f4';
 let today = dayjs();
 console.log(today.format('YYYY-MM-DD'))
-
+let historyEl = document.querySelector('.history');
 let cityEl = document.querySelector('.weather');
 cityEl.value = 'maine'
 let button = document.querySelector('.button');
+let divEl = document.createElement('div');
+
 button.addEventListener('click', function () {
+    // This is where it is stored 
+    let SavedCity = JSON.parse(localStorage.getItem("saved"));
+
+
+    if (SavedCity !== null) {
+
+        if (!SavedCity.includes(cityEl.value)) {
+
+            let divEl = document.createElement('div');
+            historyEl.appendChild(divEl).textContent = cityEl.value
+            divEl.setAttribute('id', cityEl.value)
+
+            SavedCity.push(cityEl.value)
+            localStorage.setItem('saved', JSON.stringify(SavedCity))
+        };
+    } else {
+        let divEl = document.createElement('div');
+        historyEl.appendChild(divEl).textContent = cityEl.value
+        divEl.setAttribute('id', cityEl.value)
+        SavedCity = [cityEl.value];
+        localStorage.setItem('saved', JSON.stringify(SavedCity));
+    }
+
+
+
+
     fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + cityEl.value + "&appid=" + "b8a8e7dd16a33d470c7849ca148ec3f4")
         .then(function (response) {
             return response.json();
@@ -23,10 +51,15 @@ button.addEventListener('click', function () {
             descriptionEl.textContent = 'Humidity: ' + data.list[0].main.humidity + '%'
             let windEl = document.querySelector('.wind');
             windEl.textContent = 'Wind Speed: ' + data.list[0].wind.speed + ' MPH'
+            let imageEl = document.querySelector('.image');
+            imageEl.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[0].weather[0].icon + '@2x.png')
+
+
             // first card
             for (let i = 0; i < 40; i++) {
                 if (data.list[i].dt_txt.includes("12:00:00") == true && data.list[i].dt_txt.includes(today.add(1, 'day').format('YYYY-MM-DD')) == true) {
-                  
+                    let image1El = document.querySelector('.image1');
+                    image1El.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[i].weather[0].icon + '@2x.png')
                     let date1El = document.querySelector('.date1');
                     date1El.textContent = 'Date: ' + (today.add(1, 'day').format('YYYY-MM-DD'))
                     let humid1El = document.querySelector('.humid1');
@@ -35,11 +68,14 @@ button.addEventListener('click', function () {
                     temp1El.textContent = 'Temperature: ' + Math.round((data.list[i].main.temp - 273.15) * (9 / 5) + (32)) + '°F'
                     let wind1 = document.querySelector('.wind1');
                     wind1.textContent = 'Wind Speed: ' + data.list[i].wind.speed + ' MPH'
+
                 }
             }
             // second card
             for (let i = 0; i < 40; i++) {
                 if (data.list[i].dt_txt.includes("12:00:00") == true && data.list[i].dt_txt.includes(today.add(2, 'day').format('YYYY-MM-DD')) == true) {
+                    let image2El = document.querySelector('.image2');
+                    image2El.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[i].weather[0].icon + '@2x.png')
                     let date2El = document.querySelector('.date2');
                     date2El.textContent = 'Date: ' + (today.add(2, 'day').format('YYYY-MM-DD'))
                     let humid2El = document.querySelector('.humid2');
@@ -53,6 +89,8 @@ button.addEventListener('click', function () {
             // third card
             for (let i = 0; i < 40; i++) {
                 if (data.list[i].dt_txt.includes("12:00:00") == true && data.list[i].dt_txt.includes(today.add(3, 'day').format('YYYY-MM-DD')) == true) {
+                    let image3El = document.querySelector('.image3');
+                    image3El.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[i].weather[0].icon + '@2x.png')
                     let date3El = document.querySelector('.date3');
                     date3El.textContent = 'Date: ' + (today.add(3, 'day').format('YYYY-MM-DD'))
                     let humid3El = document.querySelector('.humid3');
@@ -66,6 +104,8 @@ button.addEventListener('click', function () {
             // fourth card
             for (let i = 0; i < 40; i++) {
                 if (data.list[i].dt_txt.includes("12:00:00") == true && data.list[i].dt_txt.includes(today.add(4, 'day').format('YYYY-MM-DD')) == true) {
+                    let image4El = document.querySelector('.image4');
+                    image4El.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[i].weather[0].icon + '@2x.png')
                     let date4El = document.querySelector('.date4');
                     date4El.textContent = 'Date: ' + (today.add(4, 'day').format('YYYY-MM-DD'))
                     let humid4El = document.querySelector('.humid4');
@@ -79,6 +119,8 @@ button.addEventListener('click', function () {
             // fifth card
             for (let i = 0; i < 40; i++) {
                 if (data.list[i].dt_txt.includes("12:00:00") == true && data.list[i].dt_txt.includes(today.add(5, 'day').format('YYYY-MM-DD')) == true) {
+                    let image5El = document.querySelector('.image5');
+                    image5El.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[i].weather[0].icon + '@2x.png')
                     let date5El = document.querySelector('.date5');
                     date5El.textContent = 'Date: ' + (today.add(5, 'day').format('YYYY-MM-DD'))
                     let humid5El = document.querySelector('.humid5');
@@ -89,5 +131,11 @@ button.addEventListener('click', function () {
                     wind5.textContent = 'Wind Speed: ' + data.list[i].wind.speed + ' MPH'
                 }
             }
+            // This is the local storage
+
         })
 });
+
+// divEl.addEventListener('click', function() {
+//     console.log('hello');
+// })
