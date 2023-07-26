@@ -24,7 +24,7 @@ button.addEventListener('click', function () {
             SavedCity.push(cityEl.value)
             localStorage.setItem('saved', JSON.stringify(SavedCity))
             divEl.addEventListener('click', function () {
-                fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + divEl.id + "&appid=" + "b8a8e7dd16a33d470c7849ca148ec3f4")
+                fetch("s//api.openweathermap.org/data/2.5/forecast?q=" + divEl.id + "&appid=" + "b8a8e7dd16a33d470c7849ca148ec3f4")
                     .then(function (response) {
                         return response.json();
                     })
@@ -135,7 +135,7 @@ button.addEventListener('click', function () {
         SavedCity = [cityEl.value];
         localStorage.setItem('saved', JSON.stringify(SavedCity));
         divEl.addEventListener('click', function () {
-            fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + divEl.id + "&appid=" + "b8a8e7dd16a33d470c7849ca148ec3f4")
+            fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + divEl.id + "&appid=" + "b8a8e7dd16a33d470c7849ca148ec3f4")
                 .then(function (response) {
                     return response.json();
                 })
@@ -234,7 +234,7 @@ button.addEventListener('click', function () {
         })
     }
     //fetch weather info for input city and populate page
-    fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + cityEl.value + "&appid=" + "b8a8e7dd16a33d470c7849ca148ec3f4")
+    fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + cityEl.value + "&appid=" + "b8a8e7dd16a33d470c7849ca148ec3f4")
         .then(function (response) {
             return response.json();
         })
@@ -345,7 +345,7 @@ function render() {
         historyEl.appendChild(divEl).textContent = SavedCity[i]
         divEl.setAttribute('id', SavedCity[i])
         divEl.addEventListener('click', function () {
-            fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + divEl.id + "&appid=" + "b8a8e7dd16a33d470c7849ca148ec3f4")
+            fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + divEl.id + "&appid=" + "b8a8e7dd16a33d470c7849ca148ec3f4")
                 .then(function (response) {
                     return response.json();
                 })
