@@ -11,7 +11,6 @@ let button = document.querySelector('.button');
 // -adds click listeners that fetch weather info when saved city is clicked (line 26 and line135)
 // -fetches weather for city in input field when submit button is clicked (line 238)
 button.addEventListener('click', function () {
-
     let SavedCity = JSON.parse(localStorage.getItem("saved"));
     //check if saved city array is null. If not, create a clickable saved city div
     //and store city array in local storage
@@ -130,7 +129,6 @@ button.addEventListener('click', function () {
         //If saved city array is null, create first element, and store in local storage and
         //create clickable saved city div
     } else {
-
         let divEl = document.createElement('div');
         historyEl.appendChild(divEl).textContent = cityEl.value
         divEl.setAttribute('id', cityEl.value)
@@ -141,7 +139,6 @@ button.addEventListener('click', function () {
                 .then(function (response) {
                     return response.json();
                 })
-
                 .then(function (data) {
                     console.log('Fetch Response \n-------------');
                     console.log(data);
@@ -156,8 +153,6 @@ button.addEventListener('click', function () {
                     windEl.textContent = 'Wind Speed: ' + data.list[0].wind.speed + ' MPH'
                     let imageEl = document.querySelector('.image');
                     imageEl.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[0].weather[0].icon + '@2x.png')
-
-
                     // first card
                     for (let i = 0; i < 40; i++) {
                         if (data.list[i].dt_txt.includes("12:00:00") == true && data.list[i].dt_txt.includes(today.add(1, 'day').format('YYYY-MM-DD')) == true) {
@@ -171,7 +166,6 @@ button.addEventListener('click', function () {
                             temp1El.textContent = 'Temperature: ' + Math.round((data.list[i].main.temp - 273.15) * (9 / 5) + (32)) + '°F'
                             let wind1 = document.querySelector('.wind1');
                             wind1.textContent = 'Wind Speed: ' + data.list[i].wind.speed + ' MPH'
-
                         }
                     }
                     // second card
@@ -237,19 +231,13 @@ button.addEventListener('click', function () {
 
                 })
                 .catch(err => alert('You entered Wrong city name'))
-
-
-
-
         })
-
     }
     //fetch weather info for input city and populate page
     fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + cityEl.value + "&appid=" + "b8a8e7dd16a33d470c7849ca148ec3f4")
         .then(function (response) {
             return response.json();
         })
-
         .then(function (data) {
             console.log('Fetch Response \n-------------');
             console.log(data);
@@ -264,8 +252,6 @@ button.addEventListener('click', function () {
             windEl.textContent = 'Wind Speed: ' + data.list[0].wind.speed + ' MPH'
             let imageEl = document.querySelector('.image');
             imageEl.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[0].weather[0].icon + '@2x.png')
-
-
             // first card
             for (let i = 0; i < 40; i++) {
                 if (data.list[i].dt_txt.includes("12:00:00") == true && data.list[i].dt_txt.includes(today.add(1, 'day').format('YYYY-MM-DD')) == true) {
@@ -279,7 +265,6 @@ button.addEventListener('click', function () {
                     temp1El.textContent = 'Temperature: ' + Math.round((data.list[i].main.temp - 273.15) * (9 / 5) + (32)) + '°F'
                     let wind1 = document.querySelector('.wind1');
                     wind1.textContent = 'Wind Speed: ' + data.list[i].wind.speed + ' MPH'
-
                 }
             }
             // second card
@@ -343,6 +328,7 @@ button.addEventListener('click', function () {
                 }
             }
         })
+        // This ensures that an alert will pop up if city name spelling is incorrect. 
         .catch(function (error) {
             document.querySelector('#' + cityEl.value).remove();
             SavedCity = JSON.parse(localStorage.getItem('saved'));
@@ -350,11 +336,7 @@ button.addEventListener('click', function () {
             localStorage.setItem('saved', JSON.stringify(SavedCity));
             alert('Not a city. Please make sure spelling is correct.')
         })
-
 });
-
-
-
 function render() {
     let SavedCity = JSON.parse(localStorage.getItem('saved'))
 
@@ -367,7 +349,6 @@ function render() {
                 .then(function (response) {
                     return response.json();
                 })
-
                 .then(function (data) {
                     console.log('Fetch Response \n-------------');
                     console.log(data);
@@ -382,8 +363,6 @@ function render() {
                     windEl.textContent = 'Wind Speed: ' + data.list[0].wind.speed + ' MPH'
                     let imageEl = document.querySelector('.image');
                     imageEl.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[0].weather[0].icon + '@2x.png')
-
-
                     // first card
                     for (let i = 0; i < 40; i++) {
                         if (data.list[i].dt_txt.includes("12:00:00") == true && data.list[i].dt_txt.includes(today.add(1, 'day').format('YYYY-MM-DD')) == true) {
@@ -397,7 +376,6 @@ function render() {
                             temp1El.textContent = 'Temperature: ' + Math.round((data.list[i].main.temp - 273.15) * (9 / 5) + (32)) + '°F'
                             let wind1 = document.querySelector('.wind1');
                             wind1.textContent = 'Wind Speed: ' + data.list[i].wind.speed + ' MPH'
-
                         }
                     }
                     // second card
@@ -465,6 +443,5 @@ function render() {
         })
 
     }
-
 }
 render();
